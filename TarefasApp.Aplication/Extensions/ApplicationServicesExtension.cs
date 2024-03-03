@@ -4,9 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TarefasApp.Application.Services;
-using TarefasApp.Application.Data;
 using TarefasApp.Application.Interfaces;
+using TarefasApp.Application.Services;
 
 namespace TarefasApp.Application.Extensions
 {
@@ -24,8 +23,8 @@ namespace TarefasApp.Application.Extensions
                 cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
             });
 
-            //registrando a classe FakeDataStore
-            services.AddSingleton<FakeDataStore>();
+            //configurando o AutoMapper
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             //registrando as interfaces/classes de serviço da aplicação
             services.AddTransient<ITarefaAppService, TarefaAppService>();
